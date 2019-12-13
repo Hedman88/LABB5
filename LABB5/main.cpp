@@ -43,6 +43,8 @@ int main(int argc, char *argv[]) {
 	Rectangle a(200, 300, Point2D(200, 100), 0xff0000ff);
 	Triangle b(200, 200, Point2D(600, 600), 0x00ff00ff);
 	Circle c(200, Point2D(1000, 500), 0x0000ffff);
+	Circle c(200, Point2D(1000, 500), 0x0000ffff);
+	Circle c(200, Point2D(1000, 500), 0x0000ffff);
 
 	SDL_Init(SDL_INIT_EVERYTHING);
 	SDL_Window *window = SDL_CreateWindow("Title", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1600, 1080, SDL_WINDOW_SHOWN);
