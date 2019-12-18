@@ -15,8 +15,13 @@ Rectangle::~Rectangle()
 }
 
 void Rectangle::render(SDL_Renderer *renderer) {
-	cout << endl << "---Rectangle---" << endl << "Position: " << position.toString() << endl << "Width: " << width << endl << "Height: " << height << endl;
-	SDL_SetRenderDrawColor(renderer, 100, 0, 175, 150);
+	cout << endl << "---Rectangle---" << endl << "Position: " << position.toString() << endl << "Width: " << width << endl << "Height: " << height << endl; 
+	int r, g, b, a;
+	r = RGBA >> 24;
+	g = RGBA << 8; g = g >> 24;
+	b = RGBA << 16; b = b >> 24;
+	a = RGBA << 24; a = a >> 24;
+	SDL_SetRenderDrawColor(renderer, r, g, b, a);
 	SDL_RenderDrawLineF(renderer, position.getX(), position.getY(), position.getX() + width, position.getY());
 	SDL_RenderDrawLineF(renderer, position.getX() + width, position.getY(), position.getX() + width, position.getY() + height);
 	SDL_RenderDrawLineF(renderer, position.getX() + width, position.getY() + height, position.getX(), position.getY() + height);

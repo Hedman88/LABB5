@@ -16,7 +16,12 @@ Triangle::~Triangle()
 
 void Triangle::render(SDL_Renderer *renderer) {
 	cout << endl << "---Triangle---" << endl << "Position: " << position.toString() << endl << "Base: " << base << endl << "Height: " << height << endl;
-	SDL_SetRenderDrawColor(renderer, 100, 0, 175, 150);
+	int r, g, b, a;
+	r = RGBA >> 24;
+	g = RGBA << 8; g = g >> 24;
+	b = RGBA << 16; b = b >> 24;
+	a = RGBA << 24; a = a >> 24;
+	SDL_SetRenderDrawColor(renderer, r, g, b, a);
 	SDL_RenderDrawLineF(renderer, position.getX(), position.getY(), position.getX() + base / 2, position.getY() + height);
 	SDL_RenderDrawLineF(renderer, position.getX() + base / 2, position.getY() + height, position.getX() - base / 2, position.getY() + height);
 	SDL_RenderDrawLineF(renderer, position.getX() - base / 2, position.getY() + height, position.getX(), position.getY());

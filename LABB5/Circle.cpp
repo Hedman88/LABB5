@@ -16,14 +16,18 @@ Circle::~Circle()
 
 void Circle::render(SDL_Renderer *renderer) {
 	cout << endl << "---Circle---" << endl << "Position: " << position.toString() << endl << "Radius: " << radius << endl;
-	SDL_SetRenderDrawColor(renderer, 100, 0, 175, 150);
-	int k = 50;
+	int r, g, b, a;
+	r = RGBA >> 24;
+	g = RGBA << 8; g = g >> 24;
+	b = RGBA << 16; b = b >> 24;
+	a = RGBA << 24; a = a >> 24;
+	SDL_SetRenderDrawColor(renderer, r, g, b, a);
+	int k = 360;
+	double twoPi = 2 * M_PI;
 	for (int i = 0; i < k; i++) {
 		SDL_RenderDrawLineF(renderer, 
-			sqrtf(pow(radius, 2) - pow(((radius/k)*(i + 1))-(position.getY()+radius),2)) + (position.getY()+radius),
-			position.getY() + i * 10, 
-			sqrtf(pow(radius, 2) - pow(((radius / k)*(i + 2)) - (position.getY() + radius), 2)) + (position.getY() + radius),
-			position.getY() + (i+1) * 10);
+			position.getX() + cos((twoPi / k)*i)*radius, position.getY() + sin((twoPi / k)*i)*radius,
+			position.getX() + cos((twoPi / k)*(i+1))*radius, position.getY() + sin((twoPi / k)*(i+1))*radius);
 	}
 }
 
