@@ -1,0 +1,4 @@
+1. I learned about SDL, a way to draw in c++.
+2. It was difficult to figure out and work with SDL. It was also difficult to grasp my head around drawing that circle.
+3. I dunno.
+Estimated time: 15-20 hours
